@@ -3,6 +3,8 @@
     <h1>User Form</h1>
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
       <div class="form-group">
+
+        <!-- Validate First Name -->
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" id="firstName"
                required
@@ -14,6 +16,7 @@
         </div>
       </div>
 
+      <!-- Validate Last Name -->
       <div class="form-group">
         <label for="lastName">Last Name</label>
         <input type="text" class="form-control" id="lastName" required
@@ -24,6 +27,7 @@
         </div>
       </div>
 
+      <!-- Validate Email -->
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
@@ -36,10 +40,7 @@
     
       </div>
 
-
-     
-
-
+      <!-- Gender Selection -->
       <div class="form-group">
         <label for="gender">Gender</label>
         <select class="form-control" id="gender"
@@ -53,19 +54,19 @@
         </div>
       </div>
 
+      <!-- Validate Password -->
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+        <label for="password">Password</label> 
+        <input type="password" class="form-control" id="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}" 
                [(ngModel)]="model.password" name="password" #password="ngModel">
                <div *ngIf="password.invalid && (password.dirty || password.touched)"
                class="alert alert-danger">
              <p *ngIf="password.errors.required">Password is required</p>  
-             <p *ngIf="password.errors.pattern">Password must be over 8 characters include an uppercase letter, a number and a special character (ex:@$!%*?&)</p>
+             <p *ngIf="password.errors.pattern">The password must be at least 9 characters. It should include at least one upper case letter, and at least one lower case, at least one special character(ex:@$!%*?&) and at least one number.</p>
         </div>
       </div>
 
-
-
+      <!-- Validate Confirm Password -->
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" class="form-control" id="confirmPassword" required pattern="{{ password.value }}"
@@ -82,6 +83,7 @@
     </form>
   </div>
 
+  <!-- Display Submitted Details -->
   <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
     <div class="row">
